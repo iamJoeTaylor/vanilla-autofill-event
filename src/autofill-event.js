@@ -25,7 +25,9 @@
     // setTimeout needed for Chrome as it fills other
     // form fields a little later...
     window.setTimeout(function() {
-      window.checkAndTriggerAutoFillEvent(findParentForm(target).querySelectorAll('input'));
+      var parentForm = findParentForm(target);
+      if (!parentForm) return;
+      window.checkAndTriggerAutoFillEvent(parentForm.querySelectorAll('input'));
     }, 20);
   });
 
